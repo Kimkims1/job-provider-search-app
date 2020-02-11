@@ -57,7 +57,7 @@ public class Register extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-        subscribers = firestore.collection("students");
+        subscribers = firestore.collection("Users");
 
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
