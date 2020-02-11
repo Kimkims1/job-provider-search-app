@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "882520031104",
+    "firebase_url": "https://it-jobs-cbe23.firebaseio.com",
+    "project_id": "it-jobs-cbe23",
+    "storage_bucket": "it-jobs-cbe23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882520031104:android:fc2e8108d310daf338cb65",
+        "android_client_info": {
+          "package_name": "com.carldroid.itjobs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882520031104-v4bn8r7bh5tbjnni51nsgncf1rf24oqf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.carldroid.itjobs",
+            "certificate_hash": "965628357869171836c43a69437488873033fd67"
+          }
+        },
+        {
+          "client_id": "882520031104-mabmb6ijjrvk17321va57r3ul6db6v9d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXGI1ysxFA_e5WUxOttNjQZaOZUg3L47A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882520031104-mabmb6ijjrvk17321va57r3ul6db6v9d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
