@@ -196,7 +196,7 @@ public class Login extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             pd.dismiss();
                             FirebaseUser user = mAuth.getCurrentUser();
-                            startActivity(new Intent(Login.this, Dashboard.class));
+                            startActivity(new Intent(Login.this, DrawerActivity.class));
                             finish();
 
 
@@ -274,7 +274,7 @@ public class Login extends AppCompatActivity {
                             }
 
                             Toast.makeText(Login.this, "" + user.getEmail(), Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(Login.this, Dashboard.class));
+                            startActivity(new Intent(Login.this, DrawerActivity.class));
                             finish();
                         } else {
                             Toast.makeText(Login.this, "Login Failed.....", Toast.LENGTH_SHORT).show();
