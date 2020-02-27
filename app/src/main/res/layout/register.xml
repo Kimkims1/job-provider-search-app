@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome to Job Service App"
+        android:text="Welcome to Cool Jobs App"
         android:textAlignment="center"
         android:textColor="@color/colorBlack"
         android:textSize="25sp" />
