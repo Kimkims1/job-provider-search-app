@@ -8,4 +8,6 @@
 
     <color name="lightMediumGray">#f3f3f3</color>
     <color name="fav_color_tint">#CAC7C7</color>
+
+    <color name="textColor">#0350A3</color>
 </resources>
