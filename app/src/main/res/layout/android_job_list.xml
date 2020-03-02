@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="175dp"
+    android:layout_height="145dp"
     android:orientation="vertical">
 
     <ImageView
@@ -19,8 +19,8 @@
 
     <ImageView
         android:id="@+id/item_book_img"
-        android:layout_width="100dp"
-        android:layout_height="150dp"
+        android:layout_width="91dp"
+        android:layout_height="130dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -28,6 +28,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/android" />
 
     <TextView
@@ -37,7 +38,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Android Developer"
-        android:textColor="@color/textColor"
+        android:textSize="12dp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/item_book_img"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
@@ -52,7 +53,7 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:text="Cellulant Co."
-        android:textColor="@color/textColor"
+        android:textSize="10dp"
         app:layout_constraintStart_toEndOf="@+id/item_book_img"
         app:layout_constraintTop_toBottomOf="@+id/item_job_title" />
 
@@ -63,7 +64,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="1st March 2020"
-        android:textColor="@color/textColor"
+       android:textSize="10dp"
         app:layout_constraintStart_toEndOf="@+id/item_book_img"
         app:layout_constraintTop_toBottomOf="@+id/item_job_description" />
 
@@ -75,7 +76,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="Nairobi"
-        android:textColor="@color/textColor"
+       android:textSize="10dp"
         app:layout_constraintStart_toEndOf="@+id/item_book_img"
         app:layout_constraintTop_toBottomOf="@+id/item_job_time" />
 
