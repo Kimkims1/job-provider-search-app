@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20sp"
-    tools:context=".Register">
+    tools:context=".ui.class_categories.Registration">
 
     <!---Textview: Label REGISTER -->
     <TextView

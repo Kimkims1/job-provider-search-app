@@ -1,4 +1,4 @@
-package com.carldroid.itjobs;
+package com.carldroid.itjobs.ui.class_categories;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -10,14 +10,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.SearchView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
+import com.carldroid.itjobs.AndroidDevAdapter;
+import com.carldroid.itjobs.AndroidDevModel;
+import com.carldroid.itjobs.R;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -38,7 +39,6 @@ public class AndroidDevs extends AppCompatActivity {
 
     ProgressDialog pd;
 
-    private static final String TAG = "AndroidDevs";
 
     RecyclerView recyclerView;
 

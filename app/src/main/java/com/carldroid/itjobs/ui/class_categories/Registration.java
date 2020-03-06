@@ -1,4 +1,4 @@
-package com.carldroid.itjobs;
+package com.carldroid.itjobs.ui.class_categories;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.carldroid.itjobs.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,7 +28,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 
-public class Register extends AppCompatActivity {
+public class Registration extends AppCompatActivity {
 
     private EditText EmailEt, PasswordEt;
     private Button mRegisterBtn;
@@ -35,7 +36,7 @@ public class Register extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
-    private CollectionReference subscribers;
+    private CollectionReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,7 @@ public class Register extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-        subscribers = firestore.collection("Users");
+        reference = firestore.collection("Users");
 
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +83,7 @@ public class Register extends AppCompatActivity {
         mHaveAccountTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Register.this, Login.class));
+                startActivity(new Intent(Registration.this, Login.class));
                 finish();
             }
         });
@@ -108,25 +109,25 @@ public class Register extends AppCompatActivity {
                             hashMap.put("email", email);
                             hashMap.put("uid", uid);
 
-                            subscribers.add(hashMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            reference.add(hashMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
-                                    Toast.makeText(Register.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Registration.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(Register.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Registration.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
 
-                            Toast.makeText(Register.this, "Registered.....\n" + user.getEmail(), Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(Register.this, Dashboard.class));
+                            Toast.makeText(Registration.this, "Registered.....\n" + user.getEmail(), Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(Registration.this, Dashboard.class));
                             finish();
                         } else {
                             progressDialog.dismiss();
 
-                            Toast.makeText(Register.this, "Authentication failed.",
+                            Toast.makeText(Registration.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
 
                         }
@@ -135,7 +136,7 @@ public class Register extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
                 progressDialog.dismiss();
-                Toast.makeText(Register.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Registration.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

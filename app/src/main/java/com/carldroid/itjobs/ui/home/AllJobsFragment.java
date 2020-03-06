@@ -11,14 +11,14 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
-import com.carldroid.itjobs.AndroidDevs;
+import com.carldroid.itjobs.ui.class_categories.AndroidDevs;
 import com.carldroid.itjobs.R;
 
-public class HomeFragment extends Fragment {
+public class AllJobsFragment extends Fragment {
 
     CardView android, ios, angular, node, frontend, graphics;
 
-    public HomeFragment() {
+    public AllJobsFragment() {
         //Required Empty constructor
     }
 

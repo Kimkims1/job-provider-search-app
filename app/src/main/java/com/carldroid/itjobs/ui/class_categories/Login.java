@@ -1,4 +1,4 @@
-package com.carldroid.itjobs;
+package com.carldroid.itjobs.ui.class_categories;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.carldroid.itjobs.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -51,7 +52,7 @@ public class Login extends AppCompatActivity {
     private ProgressDialog pd;
     private SignInButton signInButton;
     private FirebaseFirestore firestore;
-    private CollectionReference subscribers;
+    private CollectionReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +66,7 @@ public class Login extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-        subscribers = firestore.collection("Users");
+        reference = firestore.collection("Users");
 
         mEmailEt = findViewById(R.id.emailEt);
         mPasswordEt = findViewById(R.id.passwordEt);
@@ -73,6 +74,10 @@ public class Login extends AppCompatActivity {
         forgotPassword = findViewById(R.id.forgotpasswordTv);
         mLoginBtn = findViewById(R.id.loginbtn);
         signInButton = findViewById(R.id.googlebtn);
+
+        if (mAuth.getCurrentUser() != null) {
+            startActivity(new Intent(getApplicationContext(), Dashboard.class));
+        }
 
         pd = new ProgressDialog(this);
 
@@ -122,7 +127,7 @@ public class Login extends AppCompatActivity {
         notHaveAccntTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Login.this, Register.class));
+                startActivity(new Intent(Login.this, Registration.class));
                 finish();
             }
         });
@@ -260,7 +265,7 @@ public class Login extends AppCompatActivity {
                                 hashMap.put("email", email);
                                 hashMap.put("uid", uid);
 
-                                subscribers.add(hashMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                reference.add(hashMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                     @Override
                                     public void onSuccess(DocumentReference documentReference) {
                                         Toast.makeText(Login.this, "Registered Successfully", Toast.LENGTH_SHORT).show();

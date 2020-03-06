@@ -1,8 +1,10 @@
-package com.carldroid.itjobs;
+package com.carldroid.itjobs.ui.class_categories;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.carldroid.itjobs.R;
 
 public class AndroidJobsDetailed extends AppCompatActivity {
 

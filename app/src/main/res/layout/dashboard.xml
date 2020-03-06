@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:padding="20sp"
     android:orientation="vertical"
-    tools:context=".Dashboard">
+    tools:context=".ui.class_categories.Dashboard">
 
     <TextView
         android:layout_width="match_parent"
