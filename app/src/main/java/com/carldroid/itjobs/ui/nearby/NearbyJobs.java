@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -84,6 +85,11 @@ public class NearbyJobs extends AppCompatActivity implements OnMapReadyCallback 
         mSearchText = findViewById(R.id.input_search);
         mGps = findViewById(R.id.ic_gps);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Find Local Jobs");
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+
         getLocationPermission();
     }
 
@@ -141,6 +147,7 @@ public class NearbyJobs extends AppCompatActivity implements OnMapReadyCallback 
                         if (task.isSuccessful()) {
                             Log.d(TAG, "onComplete: found location");
                             Location currentLocation = (Location) task.getResult();
+                            assert currentLocation != null;
                             moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
                                     DEFAULT_ZOOM, "My place");
                         } else {
@@ -250,4 +257,9 @@ public class NearbyJobs extends AppCompatActivity implements OnMapReadyCallback 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
+    @Override
+    public boolean onNavigateUp() {
+        onBackPressed();
+        return super.onNavigateUp();
+    }
 }
