@@ -64,7 +64,7 @@ public class NearbyJobs extends AppCompatActivity implements OnMapReadyCallback 
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
-    private static final float DEFAULT_ZOOM = 15f;
+    private static final float DEFAULT_ZOOM = 10f;
 
     //widgets
     EditText mSearchText;
@@ -140,19 +140,20 @@ public class NearbyJobs extends AppCompatActivity implements OnMapReadyCallback 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         try {
             if (mLocationPermissionGranted) {
-                Task location = mFusedLocationProviderClient.getLastLocation();
+                final Task location = mFusedLocationProviderClient.getLastLocation();
                 location.addOnCompleteListener(new OnCompleteListener() {
                     @Override
                     public void onComplete(@NonNull Task task) {
-                        if (task.isSuccessful()) {
+                        if (task.isSuccessful() && task.getResult() != null) {
                             Log.d(TAG, "onComplete: found location");
                             Location currentLocation = (Location) task.getResult();
-                            assert currentLocation != null;
                             moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
                                     DEFAULT_ZOOM, "My place");
+
                         } else {
-                            Log.d(TAG, "onComplete: current location is null");
-                            Toast.makeText(NearbyJobs.this, "unable to get current location", Toast.LENGTH_SHORT).show();
+                            //Log.d(TAG, "onComplete: current location is null");
+
+                            Toast.makeText(NearbyJobs.this, "unable to get current location"+task.getResult(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
