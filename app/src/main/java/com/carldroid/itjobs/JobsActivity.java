@@ -55,7 +55,7 @@ public class JobsActivity extends AppCompatActivity {
                 .setQuery(query, JobModel.class)
                 .build();
 
-        adapter = new JobAdapter(options);
+        adapter = new JobAdapter(options,this);
 
         RecyclerView recyclerView = findViewById(R.id.rec_jobs);
         recyclerView.setHasFixedSize(true);
