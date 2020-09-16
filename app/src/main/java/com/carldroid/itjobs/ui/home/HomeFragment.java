@@ -11,11 +11,12 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.carldroid.itjobs.JobsActivity;
 import com.carldroid.itjobs.R;
 
 public class HomeFragment extends Fragment {
 
-    private CardView jobs,applied,others;
+    private CardView jobs, applied, others;
 
     public HomeFragment() {
         //Required Empty constructor
@@ -32,6 +33,14 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         jobs = view.findViewById(R.id.jobs);
+
+        jobs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), JobsActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }
