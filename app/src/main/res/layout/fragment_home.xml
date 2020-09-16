@@ -8,24 +8,23 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp">
 
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="105dp">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
                 android:gravity="center"
-
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/android_dev"
+                    android:id="@+id/jobs"
                     android:layout_width="150dp"
                     android:layout_height="170dp"
                     android:layout_margin="10dp"
@@ -43,13 +42,13 @@
                             android:layout_width="104dp"
                             android:layout_height="104dp"
                             android:padding="10dp"
-                            android:src="@drawable/android" />
+                            android:src="@drawable/ic_home" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="Android Developer"
+                            android:text="Jobs"
                             android:textSize="12sp"
                             android:textStyle="bold" />
 
@@ -89,13 +88,13 @@
                             android:layout_width="104dp"
                             android:layout_height="104dp"
                             android:padding="10dp"
-                            android:src="@drawable/ios" />
+                            android:src="@drawable/ic_applied" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="IOS Developer"
+                            android:text="Applied Jobs"
                             android:textSize="12sp"
                             android:textStyle="bold" />
 
@@ -127,10 +126,10 @@
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/angular_dev"
                     android:layout_width="150dp"
                     android:layout_height="170dp"
                     android:layout_margin="10dp"
-                 android:id="@+id/angular_dev"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="3dp">
 
@@ -145,13 +144,13 @@
                             android:layout_width="104dp"
                             android:layout_height="104dp"
                             android:padding="10dp"
-                            android:src="@drawable/angular" />
+                            android:src="@drawable/ic_others" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="Angular Js Developer"
+                            android:text="Others"
                             android:textSize="12sp"
                             android:textStyle="bold" />
 
@@ -172,153 +171,6 @@
 
                 </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="150dp"
-                    android:layout_height="170dp"
-                    android:layout_margin="10dp"
-                    android:id="@+id/node_dev"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="3dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/container_bg"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="104dp"
-                            android:layout_height="104dp"
-                            android:padding="10dp"
-                            android:src="@drawable/node" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:text="Node Js Developers"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_margin="1dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:padding="5dp"
-                            android:text="View all"
-                            android:textSize="8dp" />
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="150dp"
-                    android:layout_height="170dp"
-                    android:layout_margin="10dp"
-                    android:id="@+id/graphics_dev"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="3dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/container_bg"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="104dp"
-                            android:layout_height="104dp"
-                            android:padding="10dp"
-                            android:src="@drawable/graphics" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:text="Graphics Designer"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_margin="1dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:padding="5dp"
-                            android:text="View all"
-                            android:textSize="8dp" />
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="150dp"
-                    android:layout_height="170dp"
-                    android:layout_margin="10dp"
-                    android:id="@+id/frontend_dev"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="3dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/container_bg"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="104dp"
-                            android:layout_height="104dp"
-                            android:padding="10dp"
-                            android:src="@drawable/frontend" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:text="Frontend Developer"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_margin="1dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:padding="5dp"
-                            android:text="View all"
-                            android:textSize="8dp" />
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 

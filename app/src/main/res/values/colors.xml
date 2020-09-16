@@ -10,4 +10,9 @@
     <color name="fav_color_tint">#CAC7C7</color>
 
     <color name="textColor">#0350A3</color>
+
+    <color name="colorGray01">#C9C9C9</color>
+    <color name="colorGray02">#03DAC5</color>
+    <color name="colorGreen">#43a047</color>
+    <color name="colorRed">#DD0101</color>
 </resources>

@@ -10,7 +10,7 @@ import android.view.Menu;
 import android.widget.Toast;
 
 import com.carldroid.itjobs.R;
-import com.carldroid.itjobs.ui.home.AllJobsFragment;
+import com.carldroid.itjobs.ui.home.HomeFragment;
 import com.carldroid.itjobs.ui.nearby.NearbyJobs;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -49,7 +49,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new AllJobsFragment()).commit();
+                    new HomeFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_all_jobs);
         }
     }
@@ -59,7 +59,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         switch (item.getItemId()) {
             case R.id.nav_all_jobs:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new AllJobsFragment()).commit();
+                        new HomeFragment()).commit();
                 break;
             case R.id.nav_nearby:
                 if (isServicesOk()) {

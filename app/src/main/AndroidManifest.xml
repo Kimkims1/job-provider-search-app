@@ -22,8 +22,6 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".ui.class_categories.AndroidJobsDetailed" />
-        <activity android:name=".ui.class_categories.AndroidDevs" />
         <activity android:name=".ui.nearby.NearbyJobs" />
         <activity
             android:name=".ui.class_categories.Dashboard"
