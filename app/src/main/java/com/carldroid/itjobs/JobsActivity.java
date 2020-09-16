@@ -1,5 +1,6 @@
 package com.carldroid.itjobs;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,21 +24,32 @@ public class JobsActivity extends AppCompatActivity {
     private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     private CollectionReference reference = firestore.collection("Jobs");
 
+    private ActionBar actionBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jobs);
 
         firestore = FirebaseFirestore.getInstance();
-
         jobRecyclerView = findViewById(R.id.rec_jobs);
+
+        //init actionbar
+        actionBar = getSupportActionBar();
+
+        //title
+        actionBar.setTitle("Jobs");
+
+        //add back button
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         loadData();
 
     }
 
     private void loadData() {
-        Query query = reference.orderBy("jobBudget", Query.Direction.DESCENDING);
+        Query query = reference.orderBy("idNumber", Query.Direction.ASCENDING);
 
         FirestoreRecyclerOptions<JobModel> options = new FirestoreRecyclerOptions.Builder<JobModel>()
                 .setQuery(query, JobModel.class)
@@ -61,5 +73,11 @@ public class JobsActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         adapter.stopListening();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed(); //takes you back to previous activity
+        return super.onSupportNavigateUp();
     }
 }

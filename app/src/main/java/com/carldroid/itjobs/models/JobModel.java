@@ -8,17 +8,27 @@ class JobModel {
     private String jobBudget;
     private String jobDuration;
     private String payMethod;
+    private long idNumber;
 
     public JobModel(){
         /* Empty constructor*/
     }
 
-    public JobModel(String jobTitle, String jobDescription, String jobBudget, String jobDuration, String payMethod) {
+    public JobModel(String jobTitle, String jobDescription, String jobBudget, String jobDuration, String payMethod,long idNumber) {
         this.jobTitle = jobTitle;
         this.jobDescription = jobDescription;
         this.jobBudget = jobBudget;
         this.jobDuration = jobDuration;
         this.payMethod = payMethod;
+        this.idNumber = idNumber;
+    }
+
+    public long getIdNumber() {
+        return idNumber;
+    }
+
+    public void setIdNumber(long idNumber) {
+        this.idNumber = idNumber;
     }
 
     public String getJobTitle() {

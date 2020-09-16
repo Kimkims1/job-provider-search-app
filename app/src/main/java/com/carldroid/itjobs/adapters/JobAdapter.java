@@ -28,11 +28,12 @@ public class JobAdapter extends FirestoreRecyclerAdapter<JobModel, JobAdapter.jo
 
     @Override
     protected void onBindViewHolder(@NonNull jobViewHolder holder, int position, @NonNull JobModel model) {
-        holder.jobBudget.setText(model.getJobBudget());
-        holder.jobDescription.setText(model.getJobDescription());
-        holder.jobDuration.setText(model.getJobDuration());
-        holder.payMethod.setText(model.getPayMethod());
-        holder.jobTitle.setText(model.getJobTitle());
+        holder.jobBudget.setText("Budget: " + model.getJobBudget());
+        holder.jobDescription.setText("Description: " + model.getJobDescription());
+        holder.jobDuration.setText("Time: " + model.getJobDuration());
+        holder.payMethod.setText("Payment: " + model.getPayMethod());
+        holder.jobTitle.setText("Title: " + model.getJobTitle());
+        holder.idNumber.setText("Order id: " + model.getIdNumber());
     }
 
     @NonNull
@@ -51,6 +52,7 @@ public class JobAdapter extends FirestoreRecyclerAdapter<JobModel, JobAdapter.jo
         private TextView payMethod;
         private Button btnApply;
         private TextView jobBudget;
+        private TextView idNumber;
 
         public jobViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,6 +63,7 @@ public class JobAdapter extends FirestoreRecyclerAdapter<JobModel, JobAdapter.jo
             payMethod = itemView.findViewById(R.id.payMethod);
             jobTitle = itemView.findViewById(R.id.jobTitle);
             btnApply = itemView.findViewById(R.id.btnApply);
+            idNumber = itemView.findViewById(R.id.idNumber);
         }
     }
 
