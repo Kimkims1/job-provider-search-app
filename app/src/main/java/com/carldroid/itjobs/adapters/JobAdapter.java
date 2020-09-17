@@ -102,7 +102,7 @@ public class JobAdapter extends FirestoreRecyclerAdapter<JobModel, JobAdapter.jo
                                                             String documentId = modelJob.getDocumentId();
 
                                                             firestore.collection("Notebook").document(documentId)
-                                                                    .update("isApplied", 0);
+                                                                    .update("isApplied", 1);
 
                                                             Toast.makeText(context, "Job Applied Successfully", Toast.LENGTH_LONG).show();
 
