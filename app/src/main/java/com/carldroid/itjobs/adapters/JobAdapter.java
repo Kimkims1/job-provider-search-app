@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -91,6 +92,7 @@ public class JobAdapter extends FirestoreRecyclerAdapter<JobModel, JobAdapter.jo
                                     if (task.isSuccessful()) {
                                         Toast.makeText(context, "Job applied! You will receive an email or phone call with further instructions", Toast.LENGTH_SHORT).show();
 
+                                        holder.mainLayout.setVisibility(View.INVISIBLE);
                                     } else {
                                         Toast.makeText(context, "Application failed: " + task.getException(), Toast.LENGTH_SHORT).show();
                                     }
@@ -123,6 +125,7 @@ public class JobAdapter extends FirestoreRecyclerAdapter<JobModel, JobAdapter.jo
         private Button btnApply;
         private TextView jobBudget;
         private TextView idNumber;
+        private RelativeLayout mainLayout;
 
         public jobViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -134,6 +137,7 @@ public class JobAdapter extends FirestoreRecyclerAdapter<JobModel, JobAdapter.jo
             jobTitle = itemView.findViewById(R.id.jobTitle);
             btnApply = itemView.findViewById(R.id.btnApply);
             idNumber = itemView.findViewById(R.id.idNumber);
+            mainLayout = itemView.findViewById(R.id.mainLayout);
         }
     }
 
