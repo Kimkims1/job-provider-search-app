@@ -18,7 +18,6 @@ import com.google.firebase.firestore.Query;
 
 public class AppliedActivity extends AppCompatActivity {
 
-    private RecyclerView jobRecyclerView;
     private AppliedAdapter adapter;
 
     private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
@@ -32,7 +31,6 @@ public class AppliedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_applied);
 
         firestore = FirebaseFirestore.getInstance();
-        jobRecyclerView = findViewById(R.id.rec_jobs);
 
         //init actionbar
         actionBar = getSupportActionBar();
