@@ -46,6 +46,13 @@ public class ConfirmedAdapter extends FirestoreRecyclerAdapter<ConfirmedModel, C
         holder.jobTitle.setText("Title: " + model.getJobTitle());
         holder.idNumber.setText("Order id: " + model.getIdNumber());
 
+        holder.btnComplete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.btnComplete.setText("Congratulations!");
+            }
+        });
+
     }
 
     @NonNull
@@ -62,7 +69,7 @@ public class ConfirmedAdapter extends FirestoreRecyclerAdapter<ConfirmedModel, C
         private TextView jobDescription;
         private TextView jobDuration;
         private TextView payMethod;
-        private Button btnApply;
+        private Button btnComplete;
         private TextView jobBudget;
         private TextView idNumber;
         private RelativeLayout mainLayout;
@@ -75,7 +82,7 @@ public class ConfirmedAdapter extends FirestoreRecyclerAdapter<ConfirmedModel, C
             jobDuration = itemView.findViewById(R.id.jobDuration);
             payMethod = itemView.findViewById(R.id.payMethod);
             jobTitle = itemView.findViewById(R.id.jobTitle);
-            btnApply = itemView.findViewById(R.id.btnApply);
+            btnComplete = itemView.findViewById(R.id.btnComplete);
             idNumber = itemView.findViewById(R.id.idNumber);
             mainLayout = itemView.findViewById(R.id.mainLayout);
         }
