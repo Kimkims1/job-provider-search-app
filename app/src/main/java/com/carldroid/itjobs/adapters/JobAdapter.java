@@ -79,7 +79,7 @@ public class JobAdapter extends FirestoreRecyclerAdapter<JobModel, JobAdapter.jo
                     long idNumber = model.getIdNumber();
                     String payMethod = model.getPayMethod();
                     String jobTitle = model.getJobTitle();
-                    String isApplied = model.getIsApplied();
+                    int isApplied = model.getIsApplied();
 
                     final JobModel jobModel = new JobModel(jobTitle, jobDescription, jobBudget, jobDuration, payMethod, idNumber, isApplied);
 
@@ -102,7 +102,7 @@ public class JobAdapter extends FirestoreRecyclerAdapter<JobModel, JobAdapter.jo
                                                             String documentId = modelJob.getDocumentId();
 
                                                             firestore.collection("Notebook").document(documentId)
-                                                                    .update("isApplied", "false");
+                                                                    .update("isApplied", 0);
 
                                                             Toast.makeText(context, "Job Applied Successfully", Toast.LENGTH_LONG).show();
 
