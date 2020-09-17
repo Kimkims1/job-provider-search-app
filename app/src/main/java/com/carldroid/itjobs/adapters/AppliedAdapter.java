@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.carldroid.itjobs.AppliedActivity;
 import com.carldroid.itjobs.R;
 import com.carldroid.itjobs.models.AppliedModel;
 import com.carldroid.itjobs.models.JobModel;
@@ -32,11 +33,14 @@ public class AppliedAdapter extends FirestoreRecyclerAdapter<AppliedModel, Appli
     private CollectionReference reference;
     private FirebaseFirestore firestore;
 
+
+
     /**
      * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
      * FirestoreRecyclerOptions} for configuration options.
      *
      * @param options
+
      */
     public AppliedAdapter(@NonNull FirestoreRecyclerOptions<AppliedModel> options, Context context) {
         super(options);
@@ -52,61 +56,6 @@ public class AppliedAdapter extends FirestoreRecyclerAdapter<AppliedModel, Appli
         holder.jobTitle.setText("Title: " + model.getJobTitle());
         holder.idNumber.setText("Order id: " + model.getIdNumber());
 
-       /* holder.btnApply.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                CollectionReference collectionReference;
-
-                firestore = FirebaseFirestore.getInstance();
-
-                if (user != null) {
-                    // Name, email address, and profile photo Url
-                    String name = user.getDisplayName();
-                    String email = user.getEmail();
-                    Uri photoUrl = user.getPhotoUrl();
-
-                    // Check if user's email is verified
-                    boolean emailVerified = user.isEmailVerified();
-
-                    // The user's ID, unique to the Firebase project. Do NOT use this value to
-                    // authenticate with your backend server, if you have one. Use
-                    // FirebaseUser.getIdToken() instead.
-                    String uid = user.getUid();
-
-                    collectionReference = firestore.collection("ApplyTest").document("Users").collection(email);
-
-                    String jobBudget = model.getJobBudget();
-                    String jobDescription = model.getJobDescription();
-                    String jobDuration = model.getJobDuration();
-                    long idNumber = model.getIdNumber();
-                    String payMethod = model.getPayMethod();
-                    String jobTitle = model.getJobTitle();
-
-                    JobModel jobModel = new JobModel(jobTitle, jobDescription, jobBudget, jobDuration, payMethod, idNumber);
-
-                    collectionReference.add(jobModel)
-                            .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                                @Override
-                                public void onComplete(@NonNull Task<DocumentReference> task) {
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(context, "Job applied! You will receive an email or phone call with further instructions", Toast.LENGTH_SHORT).show();
-
-                                       // holder.mainLayout.setVisibility(View.INVISIBLE);
-                                    } else {
-                                        Toast.makeText(context, "Application failed: " + task.getException(), Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-                }
-
-
-                //collectionReference = firestore.collection("AppliedJobs");
-
-
-            }
-        });*/
     }
 
     @NonNull

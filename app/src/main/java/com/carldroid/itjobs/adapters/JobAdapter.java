@@ -37,12 +37,6 @@ public class JobAdapter extends FirestoreRecyclerAdapter<JobModel, JobAdapter.jo
     private CollectionReference reference;
     private FirebaseFirestore firestore;
 
-    /**
-     * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
-     * FirestoreRecyclerOptions} for configuration options.
-     *
-     * @param options
-     */
     public JobAdapter(@NonNull FirestoreRecyclerOptions<JobModel> options, Context context) {
         super(options);
         this.context = context;
@@ -71,7 +65,7 @@ public class JobAdapter extends FirestoreRecyclerAdapter<JobModel, JobAdapter.jo
                     String email = user.getEmail();
 
                     assert email != null;
-                    collectionReference = firestore.collection("Applied").document("Users").collection(email);
+                    collectionReference = firestore.collection("Applied");
 
                     String jobBudget = model.getJobBudget();
                     String jobDescription = model.getJobDescription();
