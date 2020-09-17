@@ -3,6 +3,7 @@ package com.carldroid.itjobs.models;
 public
 class JobModel {
 
+    private String documentId;
     private String jobTitle;
     private String jobDescription;
     private String jobBudget;
@@ -21,6 +22,14 @@ class JobModel {
         this.jobDuration = jobDuration;
         this.payMethod = payMethod;
         this.idNumber = idNumber;
+    }
+
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
     }
 
     public long getIdNumber() {

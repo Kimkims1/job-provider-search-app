@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.carldroid.itjobs.R;
@@ -23,7 +24,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class JobAdapter extends FirestoreRecyclerAdapter<JobModel, JobAdapter.jobViewHolder> {
 
@@ -56,25 +61,16 @@ public class JobAdapter extends FirestoreRecyclerAdapter<JobModel, JobAdapter.jo
             public void onClick(View v) {
 
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                CollectionReference collectionReference;
+                final CollectionReference collectionReference;
 
                 firestore = FirebaseFirestore.getInstance();
 
                 if (user != null) {
-                    // Name, email address, and profile photo Url
-                    String name = user.getDisplayName();
+
                     String email = user.getEmail();
-                    Uri photoUrl = user.getPhotoUrl();
 
-                    // Check if user's email is verified
-                    boolean emailVerified = user.isEmailVerified();
-
-                    // The user's ID, unique to the Firebase project. Do NOT use this value to
-                    // authenticate with your backend server, if you have one. Use
-                    // FirebaseUser.getIdToken() instead.
-                    String uid = user.getUid();
-
-                    collectionReference = firestore.collection("ApplyTest").document("Users").collection(email);
+                    assert email != null;
+                    collectionReference = firestore.collection("Applied").document("Users").collection(email);
 
                     String jobBudget = model.getJobBudget();
                     String jobDescription = model.getJobDescription();
@@ -83,27 +79,23 @@ public class JobAdapter extends FirestoreRecyclerAdapter<JobModel, JobAdapter.jo
                     String payMethod = model.getPayMethod();
                     String jobTitle = model.getJobTitle();
 
-                    JobModel jobModel = new JobModel(jobTitle, jobDescription, jobBudget, jobDuration, payMethod, idNumber);
+                    final JobModel jobModel = new JobModel(jobTitle, jobDescription, jobBudget, jobDuration, payMethod, idNumber);
 
                     collectionReference.add(jobModel)
                             .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                 @Override
                                 public void onComplete(@NonNull Task<DocumentReference> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(context, "Job applied! You will receive an email or phone call with further instructions", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(context, "Job Applied!", Toast.LENGTH_SHORT).show();
 
-                                        holder.mainLayout.setVisibility(View.INVISIBLE);
+                                        holder.mainLayout.setVisibility(View.GONE);
+
                                     } else {
                                         Toast.makeText(context, "Application failed: " + task.getException(), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
                 }
-
-
-                //collectionReference = firestore.collection("AppliedJobs");
-
-
             }
         });
     }
