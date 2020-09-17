@@ -14,7 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".JobsActivity"></activity>
+        <activity android:name=".OthersActivity"></activity>
+        <activity android:name=".ConfirmedActivity" />
+        <activity android:name=".AppliedActivity" />
+        <activity android:name=".JobsActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
