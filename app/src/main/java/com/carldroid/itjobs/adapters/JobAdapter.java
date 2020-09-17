@@ -72,32 +72,36 @@ public class JobAdapter extends FirestoreRecyclerAdapter<JobModel, JobAdapter.jo
                     // authenticate with your backend server, if you have one. Use
                     // FirebaseUser.getIdToken() instead.
                     String uid = user.getUid();
+
+                    collectionReference = firestore.collection("ApplyTest").document("Users").collection(email);
+
+                    String jobBudget = model.getJobBudget();
+                    String jobDescription = model.getJobDescription();
+                    String jobDuration = model.getJobDuration();
+                    long idNumber = model.getIdNumber();
+                    String payMethod = model.getPayMethod();
+                    String jobTitle = model.getJobTitle();
+
+                    JobModel jobModel = new JobModel(jobTitle, jobDescription, jobBudget, jobDuration, payMethod, idNumber);
+
+                    collectionReference.add(jobModel)
+                            .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentReference> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(context, "Job applied! You will receive an email or phone call with further instructions", Toast.LENGTH_SHORT).show();
+
+                                    } else {
+                                        Toast.makeText(context, "Application failed: " + task.getException(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
                 }
 
 
-                collectionReference = firestore.collection("AppliedJobs");
+                //collectionReference = firestore.collection("AppliedJobs");
 
-                String jobBudget = model.getJobBudget();
-                String jobDescription = model.getJobDescription();
-                String jobDuration = model.getJobDuration();
-                long idNumber = model.getIdNumber();
-                String payMethod = model.getPayMethod();
-                String jobTitle = model.getJobTitle();
 
-                JobModel jobModel = new JobModel(jobTitle, jobDescription, jobBudget, jobDuration, payMethod, idNumber);
-
-                collectionReference.add(jobModel)
-                        .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                            @Override
-                            public void onComplete(@NonNull Task<DocumentReference> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(context, "Job applied! You will receive an email or phone call with further instructions", Toast.LENGTH_SHORT).show();
-
-                                } else {
-                                    Toast.makeText(context, "Application failed: " + task.getException(), Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
             }
         });
     }
