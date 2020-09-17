@@ -1,5 +1,7 @@
 package com.carldroid.itjobs.models;
 
+import com.google.firebase.firestore.Exclude;
+
 public
 class JobModel {
 
@@ -26,14 +28,16 @@ class JobModel {
         this.isApplied = isApplied;
     }
 
-    public String isApplied() {
+
+    public String getIsApplied() {
         return isApplied;
     }
 
-    public void setApplied(String applied) {
-        isApplied = applied;
+    public void setIsApplied(String isApplied) {
+        this.isApplied = isApplied;
     }
 
+    @Exclude
     public String getDocumentId() {
         return documentId;
     }

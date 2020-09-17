@@ -49,13 +49,15 @@ public class JobsActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-        Query query = reference.orderBy("idNumber", Query.Direction.DESCENDING);
+        Query query = reference.
+                whereEqualTo("isApplied", true)
+                .orderBy("idNumber", Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<JobModel> options = new FirestoreRecyclerOptions.Builder<JobModel>()
                 .setQuery(query, JobModel.class)
                 .build();
 
-        adapter = new JobAdapter(options,this);
+        adapter = new JobAdapter(options, this);
 
         RecyclerView recyclerView = findViewById(R.id.rec_jobs);
         recyclerView.setHasFixedSize(true);

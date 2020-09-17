@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.carldroid.itjobs.R;
@@ -17,12 +18,18 @@ import com.carldroid.itjobs.models.JobModel;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class JobAdapter extends FirestoreRecyclerAdapter<JobModel, JobAdapter.jobViewHolder> {
 
@@ -72,17 +79,36 @@ public class JobAdapter extends FirestoreRecyclerAdapter<JobModel, JobAdapter.jo
                     long idNumber = model.getIdNumber();
                     String payMethod = model.getPayMethod();
                     String jobTitle = model.getJobTitle();
+                    String isApplied = model.getIsApplied();
 
-                    final JobModel jobModel = new JobModel(jobTitle, jobDescription, jobBudget, jobDuration, payMethod, idNumber);
+                    final JobModel jobModel = new JobModel(jobTitle, jobDescription, jobBudget, jobDuration, payMethod, idNumber, isApplied);
 
                     collectionReference.add(jobModel)
                             .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                 @Override
                                 public void onComplete(@NonNull Task<DocumentReference> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(context, "Job Applied!", Toast.LENGTH_SHORT).show();
 
-                                        holder.mainLayout.setVisibility(View.GONE);
+                                        collectionReference
+                                                .get()
+                                                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                                    @Override
+                                                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                                        for (QueryDocumentSnapshot snapshot : queryDocumentSnapshots) {
+
+                                                            JobModel modelJob = snapshot.toObject(JobModel.class);
+                                                            modelJob.setDocumentId(snapshot.getId());
+
+                                                            String documentId = modelJob.getDocumentId();
+
+                                                            firestore.collection("Notebook").document(documentId)
+                                                                    .update("isApplied", "false");
+
+                                                            Toast.makeText(context, "Job Applied Successfully", Toast.LENGTH_LONG).show();
+
+                                                        }
+                                                    }
+                                                });
 
                                     } else {
                                         Toast.makeText(context, "Application failed: " + task.getException(), Toast.LENGTH_SHORT).show();
