@@ -10,18 +10,28 @@ class JobModel {
     private String jobDuration;
     private String payMethod;
     private long idNumber;
+    private String isApplied;
 
     public JobModel(){
         /* Empty constructor*/
     }
 
-    public JobModel(String jobTitle, String jobDescription, String jobBudget, String jobDuration, String payMethod,long idNumber) {
+    public JobModel(String jobTitle, String jobDescription, String jobBudget, String jobDuration, String payMethod,long idNumber,String isApplied) {
         this.jobTitle = jobTitle;
         this.jobDescription = jobDescription;
         this.jobBudget = jobBudget;
         this.jobDuration = jobDuration;
         this.payMethod = payMethod;
         this.idNumber = idNumber;
+        this.isApplied = isApplied;
+    }
+
+    public String isApplied() {
+        return isApplied;
+    }
+
+    public void setApplied(String applied) {
+        isApplied = applied;
     }
 
     public String getDocumentId() {
