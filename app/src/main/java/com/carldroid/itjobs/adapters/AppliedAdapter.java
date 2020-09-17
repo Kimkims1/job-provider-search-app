@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.carldroid.itjobs.R;
+import com.carldroid.itjobs.models.AppliedModel;
 import com.carldroid.itjobs.models.JobModel;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -25,7 +26,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class AppliedAdapter extends FirestoreRecyclerAdapter<JobModel, AppliedAdapter.jobViewHolder> {
+public class AppliedAdapter extends FirestoreRecyclerAdapter<AppliedModel, AppliedAdapter.applyViewHolder> {
 
     private Context context;
     private CollectionReference reference;
@@ -37,13 +38,13 @@ public class AppliedAdapter extends FirestoreRecyclerAdapter<JobModel, AppliedAd
      *
      * @param options
      */
-    public AppliedAdapter(@NonNull FirestoreRecyclerOptions<JobModel> options, Context context) {
+    public AppliedAdapter(@NonNull FirestoreRecyclerOptions<AppliedModel> options, Context context) {
         super(options);
         this.context = context;
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull final jobViewHolder holder, int position, @NonNull final JobModel model) {
+    protected void onBindViewHolder(@NonNull final applyViewHolder holder, int position, @NonNull final AppliedModel model) {
         holder.jobBudget.setText("Budget: " + model.getJobBudget());
         holder.jobDescription.setText("Description: " + "\n" + model.getJobDescription());
         holder.jobDuration.setText("Time: " + model.getJobDuration());
@@ -110,13 +111,13 @@ public class AppliedAdapter extends FirestoreRecyclerAdapter<JobModel, AppliedAd
 
     @NonNull
     @Override
-    public jobViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public applyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_applied, parent, false);
 
-        return new jobViewHolder(view);
+        return new applyViewHolder(view);
     }
 
-    public class jobViewHolder extends RecyclerView.ViewHolder {
+    public class applyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView jobTitle;
         private TextView jobDescription;
@@ -127,7 +128,7 @@ public class AppliedAdapter extends FirestoreRecyclerAdapter<JobModel, AppliedAd
         private TextView idNumber;
         private RelativeLayout mainLayout;
 
-        public jobViewHolder(@NonNull View itemView) {
+        public applyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             jobBudget = itemView.findViewById(R.id.budget);

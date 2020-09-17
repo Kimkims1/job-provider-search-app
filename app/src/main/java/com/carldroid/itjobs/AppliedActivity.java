@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.carldroid.itjobs.adapters.AppliedAdapter;
 import com.carldroid.itjobs.adapters.JobAdapter;
+import com.carldroid.itjobs.models.AppliedModel;
 import com.carldroid.itjobs.models.JobModel;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
@@ -16,11 +18,11 @@ import com.google.firebase.firestore.Query;
 
 public class AppliedActivity extends AppCompatActivity {
 
-    private RecyclerView jobRecyclerView;
-    private JobAdapter adapter;
+    private RecyclerView appRec;
+    private AppliedAdapter adapter;
 
     private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-    private CollectionReference reference = firestore.collection("AppliedJobs");
+    private CollectionReference reference = firestore.collection("Applied");
 
     private ActionBar actionBar;
 
@@ -30,7 +32,6 @@ public class AppliedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_applied);
 
         firestore = FirebaseFirestore.getInstance();
-        jobRecyclerView = findViewById(R.id.rec_jobs);
 
         //init actionbar
         actionBar = getSupportActionBar();
@@ -48,11 +49,11 @@ public class AppliedActivity extends AppCompatActivity {
     private void loadData() {
         Query query = reference.orderBy("idNumber", Query.Direction.DESCENDING);
 
-        FirestoreRecyclerOptions<JobModel> options = new FirestoreRecyclerOptions.Builder<JobModel>()
-                .setQuery(query, JobModel.class)
+        FirestoreRecyclerOptions<AppliedModel> options = new FirestoreRecyclerOptions.Builder<AppliedModel>()
+                .setQuery(query, AppliedModel.class)
                 .build();
 
-        adapter = new JobAdapter(options,this);
+        adapter = new AppliedAdapter(options,this);
 
         RecyclerView recyclerView = findViewById(R.id.rec_jobs);
         recyclerView.setHasFixedSize(true);
