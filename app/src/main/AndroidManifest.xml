@@ -28,8 +28,8 @@
             android:name=".ui.class_categories.Dashboard"
             android:label="@string/title_activity_drawer"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.class_categories.Login" />
-        <activity android:name=".ui.class_categories.Registration">
+        <activity android:name=".ui.class_categories.Registration" />
+        <activity android:name=".ui.class_categories.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
