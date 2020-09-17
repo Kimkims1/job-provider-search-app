@@ -12,13 +12,13 @@ class JobModel {
     private String jobDuration;
     private String payMethod;
     private long idNumber;
-    private String isApplied;
+    private int isApplied;
 
     public JobModel(){
         /* Empty constructor*/
     }
 
-    public JobModel(String jobTitle, String jobDescription, String jobBudget, String jobDuration, String payMethod,long idNumber,String isApplied) {
+    public JobModel(String jobTitle, String jobDescription, String jobBudget, String jobDuration, String payMethod,long idNumber,int isApplied) {
         this.jobTitle = jobTitle;
         this.jobDescription = jobDescription;
         this.jobBudget = jobBudget;
@@ -29,11 +29,11 @@ class JobModel {
     }
 
 
-    public String getIsApplied() {
+    public int getIsApplied() {
         return isApplied;
     }
 
-    public void setIsApplied(String isApplied) {
+    public void setIsApplied(int isApplied) {
         this.isApplied = isApplied;
     }
 
