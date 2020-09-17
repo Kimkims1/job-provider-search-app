@@ -54,6 +54,50 @@ public class AppliedAdapter extends FirestoreRecyclerAdapter<AppliedModel, Appli
         holder.jobTitle.setText("Title: " + model.getJobTitle());
         holder.idNumber.setText("Order id: " + model.getIdNumber());
 
+        holder.btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                final CollectionReference collectionReference;
+
+                firestore = FirebaseFirestore.getInstance();
+
+                if (user != null) {
+
+                    String email = user.getEmail();
+
+                    assert email != null;
+                    collectionReference = firestore.collection("Confirmed");
+
+                    String jobBudget = model.getJobBudget();
+                    String jobDescription = model.getJobDescription();
+                    String jobDuration = model.getJobDuration();
+                    long idNumber = model.getIdNumber();
+                    String payMethod = model.getPayMethod();
+                    String jobTitle = model.getJobTitle();
+                    int isApplied = model.getIsApplied();
+
+                    final JobModel jobModel = new JobModel(jobTitle, jobDescription, jobBudget, jobDuration, payMethod, idNumber, isApplied);
+
+                    collectionReference.add(jobModel)
+                            .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentReference> task) {
+                                    if (task.isSuccessful()) {
+
+                                        holder.btnConfirm.setText("Confirmed! Start Working Now!");
+                                        Toast.makeText(context, "Job Confirmed! Start Working Now!", Toast.LENGTH_LONG).show();
+                                    } else {
+                                        Toast.makeText(context, "Confirmation failed: " + task.getException(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                }
+            }
+        });
+
     }
 
     @NonNull
@@ -70,7 +114,7 @@ public class AppliedAdapter extends FirestoreRecyclerAdapter<AppliedModel, Appli
         private TextView jobDescription;
         private TextView jobDuration;
         private TextView payMethod;
-        private Button btnApply;
+        private Button btnConfirm;
         private TextView jobBudget;
         private TextView idNumber;
         private RelativeLayout mainLayout;
@@ -83,7 +127,7 @@ public class AppliedAdapter extends FirestoreRecyclerAdapter<AppliedModel, Appli
             jobDuration = itemView.findViewById(R.id.jobDuration);
             payMethod = itemView.findViewById(R.id.payMethod);
             jobTitle = itemView.findViewById(R.id.jobTitle);
-            btnApply = itemView.findViewById(R.id.btnApply);
+            btnConfirm = itemView.findViewById(R.id.btnConfirm);
             idNumber = itemView.findViewById(R.id.idNumber);
             mainLayout = itemView.findViewById(R.id.mainLayout);
         }
