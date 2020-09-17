@@ -3,32 +3,35 @@ package com.carldroid.itjobs.models;
 public
 class ConfirmedModel {
 
+    private String documentId;
     private String jobTitle;
     private String jobDescription;
     private String jobBudget;
     private String jobDuration;
     private String payMethod;
     private long idNumber;
+    private int isApplied;
 
-    public ConfirmedModel(){
-        /* Empty constructor*/
+    public ConfirmedModel() {
     }
 
-    public ConfirmedModel(String jobTitle, String jobDescription, String jobBudget, String jobDuration, String payMethod, long idNumber) {
+    public ConfirmedModel(String documentId, String jobTitle, String jobDescription, String jobBudget, String jobDuration, String payMethod, long idNumber, int isApplied) {
+        this.documentId = documentId;
         this.jobTitle = jobTitle;
         this.jobDescription = jobDescription;
         this.jobBudget = jobBudget;
         this.jobDuration = jobDuration;
         this.payMethod = payMethod;
         this.idNumber = idNumber;
+        this.isApplied = isApplied;
     }
 
-    public long getIdNumber() {
-        return idNumber;
+    public String getDocumentId() {
+        return documentId;
     }
 
-    public void setIdNumber(long idNumber) {
-        this.idNumber = idNumber;
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
     }
 
     public String getJobTitle() {
@@ -69,5 +72,21 @@ class ConfirmedModel {
 
     public void setPayMethod(String payMethod) {
         this.payMethod = payMethod;
+    }
+
+    public long getIdNumber() {
+        return idNumber;
+    }
+
+    public void setIdNumber(long idNumber) {
+        this.idNumber = idNumber;
+    }
+
+    public int getIsApplied() {
+        return isApplied;
+    }
+
+    public void setIsApplied(int isApplied) {
+        this.isApplied = isApplied;
     }
 }
