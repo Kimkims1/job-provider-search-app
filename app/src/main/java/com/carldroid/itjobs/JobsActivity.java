@@ -50,8 +50,8 @@ public class JobsActivity extends AppCompatActivity {
 
     private void loadData() {
         Query query = reference
-                .whereEqualTo("isApplied",0)
-                .orderBy("idNumber", Query.Direction.DESCENDING);
+                /*.orderBy("idNumber", Query.Direction.DESCENDING)*/
+                .whereEqualTo("isApplied",0);
 
         FirestoreRecyclerOptions<JobModel> options = new FirestoreRecyclerOptions.Builder<JobModel>()
                 .setQuery(query, JobModel.class)

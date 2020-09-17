@@ -89,27 +89,8 @@ public class JobAdapter extends FirestoreRecyclerAdapter<JobModel, JobAdapter.jo
                                 public void onComplete(@NonNull Task<DocumentReference> task) {
                                     if (task.isSuccessful()) {
 
-                                        collectionReference
-                                                .get()
-                                                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                                                    @Override
-                                                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                                        for (QueryDocumentSnapshot snapshot : queryDocumentSnapshots) {
-
-                                                            JobModel modelJob = snapshot.toObject(JobModel.class);
-                                                            modelJob.setDocumentId(snapshot.getId());
-
-                                                            String documentId = modelJob.getDocumentId();
-
-                                                            firestore.collection("Notebook").document(documentId)
-                                                                    .update("isApplied", 1);
-
-                                                            Toast.makeText(context, "Job Applied Successfully", Toast.LENGTH_LONG).show();
-
-                                                        }
-                                                    }
-                                                });
-
+                                      holder.btnApply.setText("Applied");
+                                        Toast.makeText(context, "Job Applied successful! You will receive a call or email with further instructions", Toast.LENGTH_LONG).show();
                                     } else {
                                         Toast.makeText(context, "Application failed: " + task.getException(), Toast.LENGTH_SHORT).show();
                                     }
